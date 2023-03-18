@@ -6,6 +6,7 @@ import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class KeywordsImpl implements Keywords {
@@ -13,7 +14,7 @@ public class KeywordsImpl implements Keywords {
 	static WebDriver driver;
 
 	static FileInputStream inputStream = null;
-
+	
 	static Properties prop = null;
 
 	public void open() {
@@ -35,8 +36,8 @@ public class KeywordsImpl implements Keywords {
 				}
 			}
 		}
-
-		driver = new FirefoxDriver();
+		
+		driver = prop.getProperty("browsername").equals("chrome".toString())? new ChromeDriver(): new FirefoxDriver();
 	}
 
 	public void url(String url) {

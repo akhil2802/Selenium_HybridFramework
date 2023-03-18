@@ -21,30 +21,38 @@ public class LoginTest {
 		for(int i=0; i < testData.size(); i++) {
 			
 			if(testData.get(i).equals("open")) 
-				keyword.open(); 
+				if(testData.get(i+3).equals("YES")) {
+					keyword.open(); 
+				}
 			
-			if(testData.get(i).equals("url")) 
-				keyword.url(testData.get(i + 1).toString()); 
+			if(testData.get(i).equals("url")) {
+				if(testData.get(i+3).equals("YES")) {
+					keyword.url(testData.get(i + 1).toString()); 
+				}
+			}
 			
 			if(testData.get(i).equals("input")) {
 				
 				String inputData = testData.get(i + 1).toString();
 				
 				String objectName = testData.get(i + 2).toString();
-				
-				keyword.input(inputData, objectName);
+				if(testData.get(i+3).equals("YES")) {
+					keyword.input(inputData, objectName);
+				}
 			}
 			
 			if(testData.get(i).equals("click")) {
 				
 				String objectName = testData.get(i + 2).toString();
-				
-				keyword.click(objectName);
+				if(testData.get(i+3).equals("YES")) {
+					keyword.click(objectName);
+				}
 			}	
 			
 			if(testData.get(i).equals("quit")) {
-				
-				keyword.quit();
+				if(testData.get(i+3).equals("YES")) {
+					keyword.quit();
+				}
 			}	
 						
 		}
